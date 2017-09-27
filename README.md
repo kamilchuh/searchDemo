@@ -1,4 +1,9 @@
 # searchDemo
-iOS11新特性Navigation集成UISearchController
+## iOS11新特性
+1. Navigation集成UISearchController
+2. UITableView左滑删除效果
 ## 动态图
+### Navigation集成UISearchController
 ![Alt text](https://gw.alipayobjects.com/zos/rmsportal/IVtQwasGsuYZRtWJmtoy.gif)
+### 左滑移除
+![Alt text](https://gw.alipayobjects.com/zos/rmsportal/bMZTtFLSiSZhjMdTZbks.gif)

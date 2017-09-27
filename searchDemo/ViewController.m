@@ -124,6 +124,11 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (self.searchController.active) {
@@ -131,6 +136,28 @@
     } else {
         NSLog(@"选择了列表中的%@", [self.datas objectAtIndex:indexPath.row]);
     }
+}
+
+- ( UISwipeActionsConfiguration *)tableView:(UITableView *)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //添加
+    UIContextualAction *addRowAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleNormal title:@"显示在\n社区顶部" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        NSLog(@"添加");
+        completionHandler (YES);
+    }];
+    addRowAction.backgroundColor = [UIColor blueColor];
+    //移除
+    UIContextualAction *deleteRowAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"从社区\n顶部移除" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+        //[self.titleArr removeObjectAtIndex:indexPath.row];
+        NSLog(@"移除");
+        completionHandler (YES);
+    }];
+    
+    deleteRowAction.backgroundColor = [UIColor grayColor];
+    
+    UISwipeActionsConfiguration *config = [UISwipeActionsConfiguration configurationWithActions:
+                                           @[deleteRowAction, addRowAction]];
+    return config;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
